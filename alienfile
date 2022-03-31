@@ -22,7 +22,7 @@ share {
     plugin 'Build::MSYS';
   }
   build [
-    './bootstrap.sh',  #  MSYS lacks autoreconf
+    'sh ./bootstrap.sh',  #  MSYS lacks autoreconf
     '%{configure}',
     '%{make}',
     '%{make} install',
