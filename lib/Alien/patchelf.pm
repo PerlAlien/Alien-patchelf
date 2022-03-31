@@ -30,6 +30,9 @@ Alien::patchelf - Alien module for the patchelf utility
 =head1 SYNOPSIS
 
     use Alien::patchelf;
+    
+    my ($stdout, $stderr, @errors)
+      = 'Alien::patchelf'->patchelf('--print-rpath', '/path/to/some/library.so');
 
     
 =head1 DESCRIPTION
