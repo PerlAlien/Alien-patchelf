@@ -3,7 +3,6 @@ use warnings;
 use Test::More;
 use Test::Alien;
 use Alien::patchelf;
-use File::Which qw /which/;
 
 UTILITY:
 {
