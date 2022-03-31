@@ -16,6 +16,7 @@ share {
     github_repo => 'patchelf',
   );
   plugin Extract => 'tar.gz';
+  requires 'Alien::Autotools';
   plugin 'Build::Autoconf';
   if ($on_windows) {
     plugin 'Build::MSYS';
