@@ -62,9 +62,10 @@ jobs:
 
       - name: Install dependencies 1
         run: |
-          cpanm --noest Alien::Build::Plugin::Fetch::Cache
+          cpanm --notest Alien::Build::Plugin::Fetch::Cache
           cpanm --notest Alien::MSYS
-          cpanm --notest Alien::m4
+          cpanm --installdeps --notest Alien::automake
+          cpanm --verbose Alien::automake
           cpanm --notest --installdeps .
 
       - name: Build system
