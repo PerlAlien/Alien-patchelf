@@ -20,13 +20,14 @@ my %WriteMakefileArgs = (
     },
     "BUILD_REQUIRES" => {
         %common_reqs,
-        'Alien::Build::Plugin::Download::GitHub' => '0',
+        "Alien::Build::Plugin::Download::GitHub" => '0',
     },
     "TEST_REQUIRES" => {
         "Test::Alien" => 0,
     },
     "PREREQ_PM" => {
         "Alien::Base"   => "1.41",
+        "Capture::Tiny" => '0',
     },
     META_MERGE => {
         'meta-spec' => { version => 2 },

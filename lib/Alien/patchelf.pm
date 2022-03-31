@@ -3,8 +3,18 @@ package Alien::patchelf;
 use strict;
 use warnings;
 use parent qw( Alien::Base );
+use Capture::Tiny qw /:all/;
 
 our $VERSION = '0.01';
+
+sub patchelf {
+    my ($self, @args) = @_;
+    my $utility = 'patchelf';
+    if ($self->install_type('share')) {
+        $utility = $self->bin_dir . "/$utility";
+    }
+    capture {system $utility, @args};
+}
 
 
 1;
