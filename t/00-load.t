@@ -19,7 +19,7 @@ diag(
 
 diag '';
 diag 'Install type is ' . Alien::patchelf->install_type;
-diag 'patchelf version is ' . Alien::patchelf->version;
+#diag 'patchelf version is ' . Alien::patchelf->version;
 
 done_testing();
 
