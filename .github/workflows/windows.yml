@@ -17,7 +17,7 @@ env:
   #AUTOMATED_TESTING: 1
 
 jobs:
-  build-system:
+  build-share:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v2
@@ -74,76 +74,4 @@ jobs:
           cpanm --installdeps .
           gmake
           gmake test
-
-
-  build-share:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v2
-
-      - name: Set up Perl
-        run: |
-          choco install strawberryperl
-          echo "C:\strawberry\c\bin;C:\strawberry\perl\site\bin;C:\strawberry\perl\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-          
-      - name: perl -V
-        run: |
-          echo $env:PATH
-          perl -V
-        
-      - name: Prepare for CPAN cache
-        run: |
-          perl -V > perlversion.txt
-          echo 'file which' >> perlversion.txt
-          dir perlversion.txt
-
-      - name: Cache CPAN modules
-        uses: actions/cache@v1
-        with:
-          path: c:\cx
-          key: ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
-
-      - name: Prepare for Alien cache
-        run: |
-          perl -V > aliencache.txt
-          echo 'aliens 20200604' >> aliencache.txt
-          dir aliencache.txt
-
-      - name: Cache Alien downloads
-        uses: actions/cache@v1
-        with:
-          path: C:\Users\runneradmin\.alienbuild
-          key: ${{ runner.os }}-build-${{ hashFiles('aliencache.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ hashFiles('aliencache.txt') }}
-
-      - name: Install dependencies 1
-        run: |
-          cpanm --notest --installdeps .
-  
-      - name: Install dependencies Alien::MSYS
-        run: |
-          cpanm --notest Alien::MSYS
-
-      - name: Build system
-        run: |
-          $env:ALIEN_INSTALL_TYPE="share"
-          perl Makefile.PL
-          gmake
-          gmake test TEST_VERBOSE=1
-
-      #- name: Zip dirs for upload
-      #  if: ${{ always() }}
-      #  run: |
-      #    pwd
-      #    & 7z.exe a _alien.7z
-      #
-      #- name: Upload artefact
-      #  if: ${{ always() }}
-      #  uses: actions/upload-artifact@v1
-      #  with:
-      #    name: _alien.7z
-      #    path: ./_alien.7z
 
