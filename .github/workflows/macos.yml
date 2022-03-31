@@ -24,6 +24,7 @@ jobs:
 
       - name: Set up Perl
         run: |
+          brew install automake autoconf
           brew install perl
           echo "{/Users/runner/perl5/bin}" >> $GITHUB_PATH
           mkdir -p ~/bin
