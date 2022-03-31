@@ -66,7 +66,7 @@ jobs:
           cpanm --notest Alien::MSYS
           #  Alien::automake needs to be installed before the rest of Alien::Autotools?
           cpanm --installdeps --notest Alien::automake
-          cpanm ]Alien::automake
+          cpanm --verbose Alien::automake
           cpanm --notest --installdeps .
 
       - name: Build system
