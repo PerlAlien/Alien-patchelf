@@ -7,7 +7,7 @@ use Alien::patchelf;
 UTILITY:
 {
     my ($result, $stderr, $exit) = Alien::patchelf->patchelf ("--help");
-    like ($stderr, qr{^syntax\:\s.+patchelf\n},
+    like ($stderr, qr{^syntax\:\s.*patchelf\n},
         'Got expected first line from patchelf utility');
     diag '';
     diag ("\nUtility results:\n" . $result);
