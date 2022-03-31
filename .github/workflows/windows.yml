@@ -62,11 +62,9 @@ jobs:
 
       - name: Install dependencies 1
         run: |
-          cpanm --notest --installdeps .
-  
-      - name: Install dependencies Alien::MSYS
-        run: |
           cpanm --notest Alien::MSYS
+          cpanm --notest --verbose Alien::m4
+          cpanm --notest --installdeps .
 
       - name: Build system
         run: |
