@@ -5,7 +5,7 @@ use warnings;
 use parent qw( Alien::Base );
 use Capture::Tiny qw /:all/;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub patchelf {
     my ($self, @args) = @_;
@@ -31,8 +31,9 @@ Alien::patchelf - Alien module for the patchelf utility
 
     use Alien::patchelf;
     
+    my $pe = Alien::patchelf->new;
     my ($stdout, $stderr, @errors)
-      = 'Alien::patchelf'->patchelf('--print-rpath', '/path/to/some/library.so');
+      = $pe->patchelf('--print-rpath', '/path/to/some/library.so');
 
     
 =head1 DESCRIPTION
