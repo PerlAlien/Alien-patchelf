@@ -23,7 +23,7 @@ share {
   if ($on_windows) {
     plugin 'Build::MSYS';
   }
-  if ($^O =~ /solaris/) {
+  if ($^O =~ /solaris/i) {
     plugin 'Build::Make' => 'gmake';
   }
   build [
