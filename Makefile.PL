@@ -18,11 +18,11 @@ my %WriteMakefileArgs = (
     "VERSION_FROM" => "lib/Alien/patchelf.pm",
     "CONFIGURE_REQUIRES" => {
         %common_reqs,
-        'Alien::Build::Plugin::Download::GitHub' => '0',
+        #'Alien::Build::Plugin::Download::GitHub' => '0',
     },
     "BUILD_REQUIRES" => {
         %common_reqs,
-        "Alien::Build::Plugin::Download::GitHub" => '0',
+        #"Alien::Build::Plugin::Download::GitHub" => '0',
     },
     "TEST_REQUIRES" => {
         "Test::Alien" => 0,
