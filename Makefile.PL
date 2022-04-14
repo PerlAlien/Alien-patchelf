@@ -8,6 +8,7 @@ my %common_reqs = (
     "ExtUtils::MakeMaker" => "6.52",
     "Alien::Build::MM" => "1.41",
     ($^O =~ /mswin/i) ? ("Alien::MSYS" => 0) : (),
+    "Alien::Build::Plugin::Download::Git" => "0",
 );
 
 my %WriteMakefileArgs = (
