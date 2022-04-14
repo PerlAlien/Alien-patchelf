@@ -10,7 +10,7 @@ plugin 'Probe::CommandLine' => (
  
 share {
 
-  Alien::Build->log ('$ENV{ALIEN_BUILD_PRELOAD} = ' . $ENV{ALIEN_BUILD_PRELOAD});
+  Alien::Build->log ('$ENV{ALIEN_BUILD_PRELOAD} = ' . ($ENV{ALIEN_BUILD_PRELOAD} // ''));
 
   meta->prop->{start_url} = 'https://github.com/NixOS/patchelf.git';
   plugin 'Download::Git' =>(
