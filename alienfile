@@ -21,6 +21,7 @@ share {
     version => qr/^([0-9\.]+)$/,
   );
 
+  my $config_call = '%{configure}';
   requires 'Alien::Autotools';
   plugin 'Build::Autoconf';
   if ($on_windows) {
@@ -29,10 +30,11 @@ share {
   }
   if ($^O =~ /solaris/i) {
     plugin 'Build::Make' => 'gmake';
+    $config_call = "MAKE=gmake $config_call";
   }
   build [
     'sh ./bootstrap.sh',  #  windows needs explicit shell call
-    '%{configure}',
+    $config_call,
     '%{make}',
     '%{make} install',
   ];
