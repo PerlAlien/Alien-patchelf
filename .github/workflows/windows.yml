@@ -75,4 +75,3 @@ jobs:
           cpanm --installdeps .
           gmake
           gmake test
-
