@@ -50,14 +50,15 @@ sub get_version_filter {
   use File::Which qw /which/;
   use Capture::Tiny qw /capture/;
   
-  my $cc = which ('c++') or return $default_filter;
-  
+  my $cc = which ('c++') or which ('g++')
+    or return $default_filter;
+
   my $source_file = Path::Tiny->tempfile();
   open my $FH, '>', $source_file or die "Can't create $source_file: $!";
   print $FH 'int main () { return 1; }\n';
   close $FH;
   
-  my @args = ('c++', '-std=c++17', $source_file);
+  my @args = ($cc, '-std=c++17', $source_file);
   my ($stdout, $stderr, @error) = capture {system @args};
   
   #  should set a meta_prop value on first pass 
