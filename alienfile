@@ -26,7 +26,6 @@ share {
   plugin 'Build::Autoconf';
   if ($on_windows) {
     plugin 'Build::MSYS';
-    #plugin 'Build::Make' => 'gmake';
   }
   if ($^O =~ /solaris/i) {
     plugin 'Build::Make' => 'gmake';
