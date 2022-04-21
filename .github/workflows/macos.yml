@@ -41,7 +41,7 @@ jobs:
       - name: Prepare for cache
         run: |
           perl -V > perlversion.txt
-          echo '20220414' >> perlversion.txt
+          echo '20220421' >> perlversion.txt
           ls -l perlversion.txt
 
       - name: Cache CPAN modules
@@ -56,6 +56,7 @@ jobs:
         run: |
           cpanm --notest Alien::Build
           cpanm --notest Alien::Build::MM
+          cpanm ExtUtils::CppGuess
           cpanm --installdeps .
 
       - name: Build and then run tests
