@@ -42,10 +42,20 @@ Sometimes you need to change the rpath of binary files,
 for example for aliens that are installed in non-standard locations.  
 The patchelf utility is used for this purpose.
 
-This is not useful on Windows since dynamic libs are loaded from the PATH.
-
 As with most aliens, if your system provides the patchelf utility
-then that will be used.  If not then it will be downloaded and installed for you.  
+then that will be used.  If not then it will be downloaded and installed for you
+as a shared build.
+
+If the detected c++ compiler does not support the c++17 standard then the share build
+will download an older version (0.13.1).  This should do most of what you need (it
+certainly does for me).
+
+Note that changing the rpath is not useful on Windows since dynamic libs
+are loaded from the PATH, and a different tool is used on macs (install_name_tool).
+Compilation on those platforms works nonetheless
+(and maybe you want to modify ELF binaries on such systems).
+
+
 
 =head1 METHODS
 
