@@ -25,6 +25,7 @@ task:
   script:
     - eval $(perl -I ${PERL_MOD_DIR}/lib/perl5/ -Mlocal::lib)
     - sudo cpanm --notest Alien::gmake
+    - sudo cpanm --notest ExtUtils::CppGuess
     - sudo cpanm --notest --installdeps .
     - perl Makefile.PL
     - make test
