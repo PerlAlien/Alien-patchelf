@@ -15,7 +15,7 @@ task:
       - echo $CIRRUS_OS 20220513
 
   install_script:
-    - sudo pkg install -y p5-App-cpanminus automake autoconf m4 
+    - sudo pkg install -y p5-App-cpanminus automake autoconf m4 git 
     - sudo cpanm local::lib
     - echo probe local::lib
     - perl -I ${PERL_MOD_DIR}/lib/perl5/ -Mlocal::lib
